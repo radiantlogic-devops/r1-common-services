@@ -1,4 +1,4 @@
-nodeSelector: &nodeSelector
+nodeSelector: {}
 argo-cd:
   enabled: true
   fullnameOverride: argocd
@@ -9,9 +9,9 @@ argo-cd:
   notifications:
     enabled: false
   controller:
-    nodeSelector: *nodeSelector
+    nodeSelector: {}
   redis:
-    nodeSelector: *nodeSelector
+    nodeSelector: {}
   server:
     nodeSelector: {}
     service:
