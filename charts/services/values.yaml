@@ -38,7 +38,7 @@ prometheus:
   pushgateway:
     fullnameOverride: prometheus-pushgateway
     nodeSelector: {}
-    
+
 grafana:
   fullnameOverride: grafana
   enabled: true
@@ -60,8 +60,8 @@ grafana:
           isDefault: true
   dashboardProviders:
     dashboardproviders.yaml:
-     apiVersion: 1
-     providers:
+      apiVersion: 1
+      providers:
       - name: 'fid'
         orgId: 1
         folder: ''
@@ -90,7 +90,7 @@ elasticsearch:
   enabled: true
   replicas: 1
   nodeSelector: {}
-  
+
 kibana:
   enabled: true
   fullnameOverride: kibana
@@ -102,7 +102,7 @@ kibana:
 haproxy:
   enabled: true
   fullnameOverride: haproxy
-  nodeSelector: *nodeSelector
+  nodeSelector: {}
   service: 
     type: NodePort
   config: |
