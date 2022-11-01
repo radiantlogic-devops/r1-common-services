@@ -102,7 +102,7 @@ kibana:
 haproxy:
   enabled: true
   fullnameOverride: haproxy
-  nodeSelector: *nodeSelector
+  nodeSelector: {}
   service: 
     type: NodePort
   config: |
