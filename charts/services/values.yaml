@@ -18,6 +18,8 @@ argo-cd:
       type: NodePort
   repoServer:
     nodeSelector: {}
+  crds:
+    install: false
 
 prometheus:
   enabled: true
@@ -67,7 +69,7 @@ grafana:
         folder: ''
         type: file
         disableDeletion: false
-        updateIntervalSeconds: 10 
+        updateIntervalSeconds: 10
         allowUiUpdates: true
         editable: true
         options:
@@ -97,13 +99,13 @@ kibana:
   nodeSelector: {}
   kibanaConfig:
     kibana.yml: |
-      server.basePath: "/kibana"  
-      
+      server.basePath: "/kibana"
+
 haproxy:
   enabled: true
   fullnameOverride: haproxy
   nodeSelector: {}
-  service: 
+  service:
     type: NodePort
   config: |
     defaults
