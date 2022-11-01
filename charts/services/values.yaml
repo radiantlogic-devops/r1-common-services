@@ -105,7 +105,7 @@ haproxy:
   enabled: true
   fullnameOverride: haproxy
   nodeSelector: {}
-  service: 
+  service:
     type: NodePort
   config: |
     defaults
