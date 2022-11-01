@@ -1,12 +1,13 @@
 # r1-common-services
 
-This Helm chart deploys the following helm charts:
-- Prometheus
-- Grafana
-- Elastic Search
-- Kibana
-- Argo CD
-- HA Proxy
+This Helm chart deploys the following applications using helm charts. These applications are proxied using HA Proxy.
+
+- [Prometheus](https://github.com/prometheus-community/helm-charts/tree/main/charts/prometheus)
+- [Grafana](https://github.com/grafana/helm-charts)
+- [Elasticsearch](https://github.com/elastic/helm-charts/tree/main/elasticsearch)
+- [Kibana](https://github.com/elastic/helm-charts/tree/main/kibana)
+- [Argo CD](https://github.com/argoproj/argo-helm/tree/main/charts/argo-cd)
+- [HA Proxy](https://github.com/haproxytech/helm-charts/tree/main/haproxy)
 
 ## Usage
 
@@ -21,7 +22,7 @@ helm upgrade --install my-release charts/services
 kubectl port-forward svc/haproxy 8080:80
 ```
 
-Access the services as the following locations
+Access the services using these URLs.
 
 - Prometheus - http://localhost:8080/prometheus
 - Grafana - http://localhost:8080/grafana
