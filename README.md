@@ -1,7 +1,7 @@
 # r1-common-services
 
 This Helm chart deploys the following helm charts:
-- Prometheus
+- [Prometheus](https://github.com/argoproj/argo-helm/tree/main/charts/argo-cd)
 - Grafana
 - Elastic Search
 - Kibana
