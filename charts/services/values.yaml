@@ -22,7 +22,7 @@ argo-cd:
   repoServer:
     nodeSelector: {}
   crds:
-    install: false
+    keep: false
 
 prometheus:
   enabled: true
