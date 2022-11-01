@@ -89,7 +89,7 @@ grafana:
     zookeeper: "zookeeper-dashboard"
 
 elasticsearch:
-  enabled: false
+  enabled: true
   replicas: 1
   nodeSelector: {}
 
