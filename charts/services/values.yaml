@@ -2,6 +2,9 @@ nodeSelector: {}
 argo-cd:
   enabled: true
   fullnameOverride: argocd
+  configs:
+    params:
+      server.rootpath: "/argocd"
   dex:
     enabled: false
   applicationSet:
