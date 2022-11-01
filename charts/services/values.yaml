@@ -18,6 +18,8 @@ argo-cd:
       type: NodePort
   repoServer:
     nodeSelector: {}
+  crds:
+    install: false
 
 prometheus:
   enabled: true
