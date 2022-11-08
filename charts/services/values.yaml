@@ -1,10 +1,27 @@
 nodeSelector: {}
+
+ingress:
+  enabled: false
+  className: alb
+  annotations: {}
+#  annotations:
+#    kubernetes.io/ingress.class: nginx
+  hosts:
+    - host: chart-example.local
+      paths:
+        - "/"
+  tls: []
+  #  - secretName: chart-example-tls
+  #    hosts:
+  #      - chart-example.local
+
 argo-cd:
   enabled: true
   fullnameOverride: argocd
   configs:
     params:
       server.rootpath: "/argocd"
+      server.insecure: true
   dex:
     enabled: false
   applicationSet:
@@ -127,12 +144,15 @@ haproxy:
       stats show-node
       stats uri /stats
 
+      use_backend argocd_backend if { path /argocd } or { path_beg /argocd/ }
       use_backend grafana_backend if { path /grafana } or { path_beg /grafana/ }
       use_backend kibana_backend if { path /kibana } or { path_beg /kibana/ }
       use_backend elasticsearch_backend if { path /elasticsearch } or { path_beg /elasticsearch/ }
       use_backend prometheus_backend if { path /prometheus } or { path_beg /prometheus/ }
       use_backend alertmanager_backend if { path /alertmanager } or { path_beg /alertmanager/ }
       use_backend pushgateway_backend if { path /pushgateway } or { path_beg /pushgateway/ }
+    backend argocd_backend
+      server argocd argocd-server:80
     backend grafana_backend
       http-request set-path %[path,regsub(^/grafana/?,/)]
       server grafana grafana:80
