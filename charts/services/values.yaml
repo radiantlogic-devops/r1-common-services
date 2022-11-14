@@ -1,4 +1,5 @@
-nodeSelector: {}
+nodeSelector: &node-selector
+  kubernetes.io/os: linux
 
 ingress:
   enabled: false
@@ -29,15 +30,15 @@ argo-cd:
   notifications:
     enabled: false
   controller:
-    nodeSelector: {}
+    nodeSelector: *node-selector
   redis:
-    nodeSelector: {}
+    nodeSelector: *node-selector
   server:
-    nodeSelector: {}
+    nodeSelector: *node-selector
     service:
       type: NodePort
   repoServer:
-    nodeSelector: {}
+    nodeSelector: *node-selector
   crds:
     keep: false
 
@@ -49,22 +50,22 @@ prometheus:
       - web.route-prefix=/
       - web.external-url=http://prometheus-server/prometheus/
     fullnameOverride: prometheus-server
-    nodeSelector: {}
+    nodeSelector: *node-selector
   nodeExporter:
     enabled: false
   kubeStateMetrics:
     enabled: false
   alertmanager:
     fullnameOverride: prometheus-alertmanager
-    nodeSelector: {}
+    nodeSelector: *node-selector
   pushgateway:
     fullnameOverride: prometheus-pushgateway
-    nodeSelector: {}
+    nodeSelector: *node-selector
 
 grafana:
   fullnameOverride: grafana
   enabled: true
-  nodeSelector: {}
+  nodeSelector: *node-selector
   grafana.ini:
     server:
       root_url: "%(protocol)s://%(domain)s/grafana"
@@ -111,12 +112,12 @@ grafana:
 elasticsearch:
   enabled: true
   replicas: 1
-  nodeSelector: {}
+  nodeSelector: *node-selector
 
 kibana:
   enabled: true
   fullnameOverride: kibana
-  nodeSelector: {}
+  nodeSelector: *node-selector
   kibanaConfig:
     kibana.yml: |
       server.basePath: "/kibana"
@@ -124,7 +125,7 @@ kibana:
 haproxy:
   enabled: true
   fullnameOverride: haproxy
-  nodeSelector: {}
+  nodeSelector: *node-selector
   service:
     type: NodePort
   config: |
