@@ -33,8 +33,10 @@ spec:
           {{- range .paths }}
           - path: {{ . }}
             backend:
-              serviceName: haproxy
-              servicePort: 80
+              service:
+                name: haproxy
+                port: 
+                  number: 80
           {{- end }}
     {{- end }}
   {{- end }}
